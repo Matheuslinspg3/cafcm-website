@@ -1,0 +1,71 @@
+# ============================================================
+# Decap CMS — Configuração CAFCM
+# Hospedagem: GitHub + Cloudflare Pages
+# ============================================================
+#
+# IMPORTANTE (autenticação no Cloudflare Pages):
+# O Decap CMS precisa de um provedor OAuth para logar via GitHub.
+# Como o Cloudflare Pages não oferece isso nativamente (diferente
+# do Netlify Identity), use uma das opções gratuitas:
+#   1. Um Cloudflare Worker de OAuth (ex.: github.com/i40west/netlify-cms-cloudflare-pages)
+#   2. O serviço https://api.netlify.com como gateway OAuth (criando
+#      um OAuth App no GitHub e registrando no painel do Netlify).
+# Depois de configurar, preencha base_url/auth_endpoint abaixo.
+
+backend:
+  name: github
+  repo: Matheuslinspg3/cafcm-website
+  branch: main
+  # base_url: https://SEU-OAUTH-WORKER.workers.dev   # Worker OAuth (descomente após configurar)
+  # auth_endpoint: /auth
+
+# Idioma do painel
+locale: pt
+
+# Pasta onde as imagens enviadas pelo painel serão salvas
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Editorial workflow desativado para simplificar (salvar = publicar)
+# publish_mode: editorial_workflow
+
+collections:
+  - name: "conteudo"
+    label: "Conteúdo do Site"
+    files:
+      - name: "textos"
+        label: "Textos da Página Principal"
+        file: "data.json"
+        format: "json"
+        fields:
+          # ---------- HERO ----------
+          - { label: "Hero — Selo (badge)", name: "hero_badge", widget: "string", required: false, hint: "Texto do selo acima do título. Ex.: Lei da Aprendizagem (10.097/2000)" }
+          - { label: "Hero — Título Principal", name: "hero_title", widget: "string", hint: "Aceita HTML simples. Use <span class=\"text-cafcm-yellow\">palavra</span> para destacar em amarelo." }
+          - { label: "Hero — Subtítulo", name: "hero_subtitle", widget: "text" }
+
+          # ---------- PARA EMPRESAS ----------
+          - { label: "Empresas — Título da Seção", name: "empresas_titulo", widget: "string" }
+          - { label: "Empresas — Subtítulo", name: "empresas_subtitulo", widget: "text" }
+          - { label: "Empresas — Pilar 1: Segurança Jurídica", name: "empresas_pilar1", widget: "text" }
+          - { label: "Empresas — Pilar 2: Recrutamento Pronto", name: "empresas_pilar2", widget: "text" }
+          - { label: "Empresas — Pilar 3: ESG", name: "empresas_pilar3", widget: "text" }
+
+          # ---------- CURSOS ----------
+          - { label: "Cursos — Título da Seção", name: "cursos_titulo", widget: "string" }
+          - { label: "Cursos — Subtítulo", name: "cursos_subtitulo", widget: "text" }
+          - { label: "Curso 1 — Administrativo & Varejo (descrição)", name: "curso1_descricao", widget: "text" }
+          - { label: "Curso 2 — Logística: Auxiliar Frentista (descrição)", name: "curso2_descricao", widget: "text" }
+          - { label: "Curso 3 — Construção Civil: Servente (descrição)", name: "curso3_descricao", widget: "text" }
+          - { label: "Coletivo Batucada Jovem (descrição)", name: "batucada_descricao", widget: "text" }
+
+          # ---------- PARA JOVENS ----------
+          - { label: "Jovens — Título da Seção", name: "jovens_titulo", widget: "string" }
+          - { label: "Jovens — Subtítulo", name: "jovens_subtitulo", widget: "text" }
+          - { label: "Passo 1 — Rede Protetiva (descrição)", name: "passo1_descricao", widget: "text" }
+          - { label: "Passo 2 — Sem Vestibular (descrição)", name: "passo2_descricao", widget: "text" }
+          - { label: "Passo 3 — Carteira Assinada (descrição)", name: "passo3_descricao", widget: "text" }
+
+          # ---------- CONTATO ----------
+          - { label: "Contato — Endereço da Sede", name: "endereco_sede", widget: "text", hint: "Aceita <br> para quebra de linha." }
+          - { label: "Contato — Telefone", name: "contato_telefone", widget: "string" }
+          - { label: "Contato — E-mail", name: "contato_email", widget: "string" }
