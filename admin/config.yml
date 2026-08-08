@@ -16,8 +16,8 @@ backend:
   name: github
   repo: Matheuslinspg3/cafcm-website
   branch: main
-  # base_url: https://SEU-OAUTH-WORKER.workers.dev   # Worker OAuth (descomente após configurar)
-  # auth_endpoint: /auth
+  base_url: https://cafcm-oauth.matheuslinsrecu.workers.dev
+  auth_endpoint: /auth
 
 # Idioma do painel
 locale: pt
