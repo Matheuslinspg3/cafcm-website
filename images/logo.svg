@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Círculo externo azul -->
+  <circle cx="200" cy="140" r="70" fill="#032b5b" stroke="#ffffff" stroke-width="4"/>
+
+  <!-- Chama vermelha -->
+  <path d="M200 100 C185 115, 185 130, 200 150 C215 130, 215 115, 200 100 Z" fill="#e1251b" stroke="#8b1410" stroke-width="1"/>
+
+  <!-- Chama amarela -->
+  <path d="M210 115 C205 125, 205 135, 215 145 C220 135, 220 125, 210 115 Z" fill="#ffb902" stroke="#e56a1b" stroke-width="1"/>
+
+  <!-- Texto CAFCM -->
+  <text x="200" y="250" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="#032b5b" text-anchor="middle">CAFCM</text>
+
+  <!-- Subtítulo -->
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="12" fill="#032b5b" text-anchor="middle">CENTRO DE APRENDIZAGEM, FORMAÇÃO</text>
+  <text x="200" y="295" font-family="Arial, sans-serif" font-size="12" fill="#032b5b" text-anchor="middle">CONVIVÊNCIA METROPOLITANA</text>
+</svg>
