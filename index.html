@@ -427,13 +427,41 @@
             spinner.classList.remove('hidden');
             submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
-            // Simula o envio ao servidor (substituir por fetch a um endpoint real,
-            // ex.: Cloudflare Worker, Formspree ou Web3Forms)
-            setTimeout(() => {
-                contactForm.classList.add('hidden');
-                successMessage.classList.remove('hidden');
-                successMessage.classList.add('flex');
-            }, 2000);
+            // Envio real para o Worker Cloudflare
+            const formData = {
+                nome: document.getElementById('field-nome').value,
+                email: document.getElementById('field-email').value,
+                perfil: document.getElementById('field-perfil').value,
+                mensagem: document.getElementById('field-mensagem').value
+            };
+
+            fetch('https://cafcm-form.matheuslinsrecu.workers.dev', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    contactForm.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('flex');
+                } else {
+                    alert('Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.');
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Enviar Mensagem';
+                    spinner.classList.add('hidden');
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao enviar mensagem. Verifique sua conexão e tente novamente.');
+                submitBtn.disabled = false;
+                btnText.textContent = 'Enviar Mensagem';
+                spinner.classList.add('hidden');
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            });
         });
 
         function resetForm() {
