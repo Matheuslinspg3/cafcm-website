@@ -55,20 +55,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        .logo-glow {
-            filter: drop-shadow(0 0 8px rgba(225, 37, 27, 0.3));
-            transition: filter 0.3s ease;
-        }
-        .logo-glow:hover {
-            filter: drop-shadow(0 0 16px rgba(225, 37, 27, 0.6));
-        }
-        .dark .logo-glow {
-            filter: drop-shadow(0 0 12px rgba(255, 185, 2, 0.4));
-        }
-        .dark .logo-glow:hover {
-            filter: drop-shadow(0 0 20px rgba(255, 185, 2, 0.7));
-        }
-
         /* Força as cores personalizadas */
         .text-cafcm-blue { color: #032b5b !important; }
         .dark .text-cafcm-blue { color: #f8fafc !important; }
@@ -97,8 +83,7 @@
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="#" class="flex-shrink-0 flex items-center gap-3 group">
-                        <img class="h-14 w-auto logo-glow transition-all duration-500 group-hover:scale-110 group-hover:rotate-3" src="images/logo.png" alt="Logo CAFCM">
-                        <span class="hidden sm:block text-cafcm-blue dark:text-cafcm-yellow font-extrabold text-xl tracking-tight transition-colors duration-300">CAFCM</span>
+                        <img class="h-14 w-auto transition-all duration-300 group-hover:scale-105" src="images/logo.png" alt="Logo CAFCM">
                     </a>
                 </div>
                 <!-- Menu Desktop -->
@@ -303,78 +288,6 @@
             </div>
         </div>
     </section>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-cafcm-orange font-bold tracking-wide uppercase text-sm mb-3">Matrizes Curriculares (CBO)</h2>
-                <h3 id="cursos-titulo" class="text-3xl font-extrabold text-cafcm-blue sm:text-4xl">Trilhas de Aprendizagem Focadas</h3>
-                <p id="cursos-subtitulo" class="mt-4 text-lg text-gray-500">Nossos cursos são desenhados para as demandas reais de empregabilidade da nossa região.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Curso 1: Administrativo & Varejo -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full transform hover:-translate-y-2">
-                    <div class="h-48 overflow-hidden relative bg-cafcm-blue/10 flex items-center justify-center">
-                        <i data-lucide="briefcase" class="w-16 h-16 text-cafcm-blue/40 absolute"></i>
-                        <img src="images/curso-admin.jpg" alt="Curso Administrativo e Varejo" class="w-full h-full object-cover relative" onerror="this.style.display='none'">
-                        <div class="absolute top-4 right-4 bg-cafcm-blue text-white text-xs font-bold px-3 py-1 rounded-full z-10">Alta Demanda</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h4 class="text-xl font-bold text-cafcm-blue mb-3">Administrativo &amp; Varejo</h4>
-                        <p id="curso1-descricao" class="text-gray-600 text-sm mb-6 flex-1">Formação em rotinas bancárias, pacote Office (ABNT), controle de estoque e organização empresarial. Ideal para escritórios, bancos e comércio.</p>
-                        <ul class="space-y-2 text-sm text-gray-500 font-medium border-t border-gray-100 pt-4">
-                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-red"></i> Rotinas bancárias e escritório</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-red"></i> Ensino Médio</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Curso 2: Logística / Frentista -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full transform hover:-translate-y-2">
-                    <div class="h-48 overflow-hidden relative bg-cafcm-yellow/10 flex items-center justify-center">
-                        <i data-lucide="fuel" class="w-16 h-16 text-cafcm-orange/40 absolute"></i>
-                        <img src="images/curso-logistica.jpg" alt="Curso Logística Auxiliar Frentista" class="w-full h-full object-cover relative" onerror="this.style.display='none'">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h4 class="text-xl font-bold text-cafcm-blue mb-3">Logística: Auxiliar Frentista</h4>
-                        <p id="curso2-descricao" class="text-gray-600 text-sm mb-6 flex-1">Direcionado ao motor econômico retroportuário e rodoviário da região. Especialização em atendimento, verificação mecânica básica e gestão de combustíveis.</p>
-                        <ul class="space-y-2 text-sm text-gray-500 font-medium border-t border-gray-100 pt-4">
-                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-yellow"></i> Rápida inserção no mercado</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-yellow"></i> Foco porto / rodoviário</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Curso 3: Construção Civil -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full transform hover:-translate-y-2">
-                    <div class="h-48 overflow-hidden relative bg-cafcm-orange/10 flex items-center justify-center">
-                        <i data-lucide="hard-hat" class="w-16 h-16 text-cafcm-orange/40 absolute"></i>
-                        <img src="images/curso-construcao.jpg" alt="Curso Construção Civil Servente" class="w-full h-full object-cover relative" onerror="this.style.display='none'">
-                        <div class="absolute top-4 right-4 bg-cafcm-orange text-white text-xs font-bold px-3 py-1 rounded-full z-10">Inclusão Total</div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col">
-                        <h4 class="text-xl font-bold text-cafcm-blue mb-3">Construção Civil (Servente)</h4>
-                        <p id="curso3-descricao" class="text-gray-600 text-sm mb-6 flex-1">O maior empregador braçal da região. Formalizamos a mão de obra com ensino de matemática métrica, materiais e segurança do trabalho (ECA).</p>
-                        <ul class="space-y-2 text-sm text-gray-500 font-medium border-t border-gray-100 pt-4">
-                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-orange"></i> Sem exigência escolar</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-orange"></i> Sem prova seletiva</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Destaque: Coletivo Batucada Jovem -->
-            <div class="mt-16 bg-cafcm-blue rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 left-0 w-64 h-64 bg-cafcm-red rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
-                <div class="absolute bottom-0 right-0 w-64 h-64 bg-cafcm-yellow rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-x-1/2 translate-y-1/2"></div>
-
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cafcm-yellow/20 border border-cafcm-yellow/30 text-cafcm-yellow text-xs font-bold uppercase tracking-wide mb-4 relative z-10">
-                    <i data-lucide="music" class="w-4 h-4"></i> Projeto Cultural — ProAC
-                </div>
-                <h4 class="text-2xl md:text-3xl font-bold text-white mb-4 relative z-10">Coletivo Batucada Jovem</h4>
-                <p id="batucada-descricao" class="text-gray-300 max-w-2xl mx-auto relative z-10">Muito além da teoria corporativa. Utilizamos a arte e a percussão, com chancela do Estado (ProAC), para desenvolver soft-skills cruciais: ritmo, disciplina coletiva e inteligência emocional.</p>
-            </div>
-        </div>
-    </section>
 
     <!-- ============ SEÇÃO PARA JOVENS / COMO FUNCIONA ============ -->
     <section id="jovens" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -513,7 +426,7 @@
     <footer class="bg-gray-900 dark:bg-black text-gray-400 dark:text-gray-500 py-12 border-t border-gray-800 dark:border-gray-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             <div class="flex justify-center md:justify-start">
-                <img src="images/logo.png" alt="Logo CAFCM" class="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity logo-glow" onerror="this.parentElement.innerHTML='<span class=\'text-cafcm-blue dark:text-cafcm-yellow font-extrabold text-2xl px-4\'>CAFCM</span>'">
+                <img src="images/logo.png" alt="Logo CAFCM" class="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity" onerror="this.parentElement.innerHTML='<span class=\'text-cafcm-blue dark:text-cafcm-yellow font-extrabold text-2xl px-4\'>CAFCM</span>'">
             </div>
             <div class="text-center md:text-left text-sm">
                 <p class="font-bold text-gray-300 dark:text-gray-400 mb-1">CNPJ: 07.720.366/0001-84</p>
