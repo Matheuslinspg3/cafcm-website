@@ -83,7 +83,7 @@
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="#" class="flex-shrink-0 flex items-center gap-3 group">
-                        <img class="h-14 w-auto transition-all duration-300 group-hover:scale-105" src="images/logo.svg" alt="Logo CAFCM">
+                        <img class="h-14 w-auto transition-all duration-300 group-hover:scale-105" src="images/logo.png" alt="Logo CAFCM">
                     </a>
                 </div>
                 <!-- Menu Desktop -->
@@ -94,10 +94,6 @@
                     </a>
                     <a href="#cursos" class="text-cafcm-blue dark:text-gray-300 hover:text-cafcm-red dark:hover:text-cafcm-yellow font-medium transition-colors relative group">
                         Cursos
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cafcm-red dark:bg-cafcm-yellow transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#jovens" class="text-cafcm-blue dark:text-gray-300 hover:text-cafcm-red dark:hover:text-cafcm-yellow font-medium transition-colors relative group">
-                        Para Jovens
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cafcm-red dark:bg-cafcm-yellow transition-all duration-300 group-hover:w-full"></span>
                     </a>
                     <button id="theme-toggle" aria-label="Alternar tema" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110">
@@ -123,7 +119,6 @@
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#empresas" class="block px-3 py-3 text-base font-medium text-cafcm-blue dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">Para Empresas</a>
                 <a href="#cursos" class="block px-3 py-3 text-base font-medium text-cafcm-blue dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">Cursos</a>
-                <a href="#jovens" class="block px-3 py-3 text-base font-medium text-cafcm-blue dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">Para Jovens</a>
                 <a href="#contato" class="block px-3 py-3 mt-4 text-center text-base font-medium bg-cafcm-blue dark:bg-cafcm-yellow text-white dark:text-cafcm-blue rounded-lg hover:bg-cafcm-red dark:hover:bg-cafcm-orange transition-colors">Fale Conosco</a>
             </div>
         </div>
@@ -151,9 +146,6 @@
                 <div class="flex flex-col sm:flex-row gap-4 animate-scale-in">
                     <a href="#empresas" class="flex items-center justify-center gap-2 px-8 py-4 text-base font-bold rounded-lg text-cafcm-blue bg-cafcm-yellow hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105">
                         <i data-lucide="building-2" class="w-5 h-5"></i> Sou Empresa
-                    </a>
-                    <a href="#jovens" class="flex items-center justify-center gap-2 px-8 py-4 text-base font-medium rounded-lg text-white border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-300 backdrop-blur-sm transform hover:scale-105">
-                        <i data-lucide="graduation-cap" class="w-5 h-5"></i> Sou Jovem
                     </a>
                 </div>
             </div>
@@ -223,13 +215,15 @@
                 <p id="cursos-subtitulo" class="mt-4 text-lg text-gray-500 dark:text-gray-400">Nossos cursos são desenhados para as demandas reais de empregabilidade da nossa região.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <!-- Curso 1: Frentista -->
                 <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl dark:shadow-cafcm-yellow/10 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col h-full transform hover:-translate-y-2 hover:scale-105 animate-fade-in">
-                    <div class="h-48 overflow-hidden relative bg-cafcm-yellow/10 dark:bg-cafcm-orange/20 flex items-center justify-center">
-                        <i data-lucide="fuel" class="w-16 h-16 text-cafcm-orange/40 dark:text-cafcm-yellow/40 absolute"></i>
-                        <img src="images/curso-logistica.jpg" alt="Curso Frentista" class="w-full h-full object-cover relative transition-transform duration-500 hover:scale-110" onerror="this.style.display='none'">
-                        <div class="absolute top-4 right-4 bg-cafcm-yellow dark:bg-cafcm-orange text-white dark:text-cafcm-blue text-xs font-bold px-3 py-1 rounded-full z-10">Alta Demanda</div>
+                    <div class="h-48 relative bg-cafcm-blue flex flex-col items-center justify-center group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cafcm-blue to-blue-900 opacity-90"></div>
+                        <div class="relative z-10 w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="fuel" class="w-10 h-10 text-cafcm-yellow"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-cafcm-yellow text-cafcm-blue text-xs font-bold px-3 py-1 rounded-full z-10">Alta Demanda</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <h4 class="text-xl font-bold text-cafcm-blue dark:text-cafcm-yellow mb-3">Frentista</h4>
@@ -243,25 +237,29 @@
 
                 <!-- Curso 2: Varejo -->
                 <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl dark:shadow-cafcm-orange/10 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col h-full transform hover:-translate-y-2 hover:scale-105 animate-fade-in" style="animation-delay: 0.1s;">
-                    <div class="h-48 overflow-hidden relative bg-cafcm-orange/10 dark:bg-cafcm-red/20 flex items-center justify-center">
-                        <i data-lucide="shopping-cart" class="w-16 h-16 text-cafcm-orange/40 dark:text-cafcm-red/40 absolute"></i>
-                        <img src="images/curso-construcao.jpg" alt="Curso Varejo" class="w-full h-full object-cover relative transition-transform duration-500 hover:scale-110" onerror="this.style.display='none'">
+                    <div class="h-48 relative bg-cafcm-blue flex flex-col items-center justify-center group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cafcm-blue to-blue-900 opacity-90"></div>
+                        <div class="relative z-10 w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="shopping-bag" class="w-10 h-10 text-cafcm-red"></i>
+                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <h4 class="text-xl font-bold text-cafcm-blue dark:text-cafcm-yellow mb-3">Varejo</h4>
                         <p id="curso2-descricao" class="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-1">Atendimento ao cliente, operação de caixa, reposição de produtos e organização. Formação para supermercados e comércio em geral.</p>
                         <ul class="space-y-2 text-sm text-gray-500 dark:text-gray-500 font-medium border-t border-gray-100 dark:border-gray-800 pt-4">
-                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-orange dark:text-cafcm-red"></i> Supermercados e comércio</li>
-                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-orange dark:text-cafcm-red"></i> Atendimento ao cliente</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-red dark:text-cafcm-orange"></i> Supermercados e comércio</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cafcm-red dark:text-cafcm-orange"></i> Atendimento ao cliente</li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Curso 3: Administrativo -->
                 <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl dark:shadow-cafcm-red/10 transition-all duration-300 border border-gray-100 dark:border-gray-800 flex flex-col h-full transform hover:-translate-y-2 hover:scale-105 animate-fade-in" style="animation-delay: 0.2s;">
-                    <div class="h-48 overflow-hidden relative bg-cafcm-blue/10 dark:bg-cafcm-blue/20 flex items-center justify-center">
-                        <i data-lucide="briefcase" class="w-16 h-16 text-cafcm-blue/40 dark:text-cafcm-yellow/40 absolute"></i>
-                        <img src="images/curso-admin.jpg" alt="Curso Administrativo" class="w-full h-full object-cover relative transition-transform duration-500 hover:scale-110" onerror="this.style.display='none'">
+                    <div class="h-48 relative bg-cafcm-blue flex flex-col items-center justify-center group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cafcm-blue to-blue-900 opacity-90"></div>
+                        <div class="relative z-10 w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="laptop" class="w-10 h-10 text-white"></i>
+                        </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <h4 class="text-xl font-bold text-cafcm-blue dark:text-cafcm-yellow mb-3">Administrativo</h4>
@@ -274,60 +272,6 @@
                 </div>
             </div>
 
-            <!-- Destaque: Coletivo Batucada Jovem -->
-            <div class="mt-16 bg-cafcm-blue dark:bg-gradient-to-br dark:from-gray-900 dark:to-cafcm-blue/20 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-2xl transition-colors duration-300 animate-scale-in">
-                <div class="absolute top-0 left-0 w-64 h-64 bg-cafcm-red dark:bg-cafcm-yellow rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2 animate-float"></div>
-                <div class="absolute bottom-0 right-0 w-64 h-64 bg-cafcm-yellow dark:bg-cafcm-orange rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 translate-x-1/2 translate-y-1/2 animate-float" style="animation-delay: 1.5s;"></div>
-
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cafcm-yellow/20 dark:bg-cafcm-yellow/30 border border-cafcm-yellow/30 dark:border-cafcm-yellow/40 text-cafcm-yellow mb-4 relative z-10">
-                    <i data-lucide="music" class="w-4 h-4"></i> Projeto Cultural — ProAC
-                </div>
-                <h4 class="text-2xl md:text-3xl font-bold text-white mb-4 relative z-10">Coletivo Batucada Jovem</h4>
-                <p id="batucada-descricao" class="text-gray-300 dark:text-gray-400 max-w-2xl mx-auto relative z-10">Muito além da teoria corporativa. Utilizamos a arte e a percussão, com chancela do Estado (ProAC), para desenvolver soft-skills cruciais: ritmo, disciplina coletiva e inteligência emocional.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ SEÇÃO PARA JOVENS / COMO FUNCIONA ============ -->
-    <section id="jovens" class="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 animate-slide-up">
-                <h2 class="text-cafcm-yellow dark:text-cafcm-orange font-bold tracking-wide uppercase text-sm mb-3">Acesso sem barreiras</h2>
-                <h3 id="jovens-titulo" class="text-3xl font-extrabold text-cafcm-blue dark:text-white sm:text-4xl">Filosofia do Não-Exame</h3>
-                <p id="jovens-subtitulo" class="mt-4 text-lg text-gray-500 dark:text-gray-400">Sabemos que provas excluem quem mais precisa. Nosso processo é focado na urgência social, não em vestibulares.</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-center items-start gap-8 relative">
-                <!-- Linha conectora (desktop) -->
-                <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gray-200 dark:bg-gray-700 z-0 transition-colors duration-300"></div>
-
-                <!-- Passo 1 -->
-                <div class="flex-1 text-center relative z-10 bg-white dark:bg-gray-900 px-4 animate-scale-in">
-                    <div class="w-24 h-24 mx-auto bg-cafcm-light dark:bg-gray-800 border-4 border-white dark:border-gray-700 shadow-xl dark:shadow-cafcm-yellow/20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110">
-                        <span class="text-3xl font-black text-cafcm-blue dark:text-cafcm-yellow">1</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-cafcm-blue dark:text-white mb-2">Rede Protetiva</h4>
-                    <p id="passo1-descricao" class="text-gray-500 dark:text-gray-400 text-sm">O jovem é encaminhado diretamente pelos Centros de Referência de Assistência Social (CRAS/CREAS) da sua cidade.</p>
-                </div>
-
-                <!-- Passo 2 -->
-                <div class="flex-1 text-center relative z-10 bg-white dark:bg-gray-900 px-4 animate-scale-in" style="animation-delay: 0.1s;">
-                    <div class="w-24 h-24 mx-auto bg-cafcm-blue dark:bg-cafcm-yellow border-4 border-white dark:border-gray-700 shadow-xl dark:shadow-cafcm-yellow/30 rounded-full flex items-center justify-center mb-6 ring-4 ring-cafcm-yellow/30 dark:ring-cafcm-orange/30 transition-all duration-300 hover:scale-110 animate-pulse">
-                        <span class="text-3xl font-black text-white dark:text-cafcm-blue">2</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-cafcm-blue dark:text-white mb-2">Sem Vestibular</h4>
-                    <p id="passo2-descricao" class="text-gray-500 dark:text-gray-400 text-sm">Não há provas nem testes de múltipla escolha. Estando dentro do perfil e havendo vaga, você entra. Simples assim.</p>
-                </div>
-
-                <!-- Passo 3 -->
-                <div class="flex-1 text-center relative z-10 bg-white dark:bg-gray-900 px-4 animate-scale-in" style="animation-delay: 0.2s;">
-                    <div class="w-24 h-24 mx-auto bg-cafcm-red dark:bg-cafcm-orange border-4 border-white dark:border-gray-700 shadow-xl dark:shadow-cafcm-red/20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110">
-                        <span class="text-3xl font-black text-white">3</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-cafcm-blue dark:text-white mb-2">Carteira Assinada</h4>
-                    <p id="passo3-descricao" class="text-gray-500 dark:text-gray-400 text-sm">Formação teórica e prática com bolsa-auxílio e direitos garantidos por até 2 anos nas empresas parceiras.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -567,12 +511,6 @@
             curso1_descricao:  'curso1-descricao',
             curso2_descricao:  'curso2-descricao',
             curso3_descricao:  'curso3-descricao',
-            batucada_descricao:'batucada-descricao',
-            jovens_titulo:     'jovens-titulo',
-            jovens_subtitulo:  'jovens-subtitulo',
-            passo1_descricao:  'passo1-descricao',
-            passo2_descricao:  'passo2-descricao',
-            passo3_descricao:  'passo3-descricao',
             endereco_sede:     'endereco-sede',
             contato_telefone:  'contato-telefone',
             contato_email:     'contato-email'

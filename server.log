@@ -1,0 +1,5 @@
+127.0.0.1 - - [01/Sep/2026 16:54:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Sep/2026 16:54:37] "GET /images/logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [01/Sep/2026 16:54:37] "GET /images/hero.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [01/Sep/2026 16:54:37] "GET /images/empresas.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [01/Sep/2026 16:54:39] "GET /data.json HTTP/1.1" 200 -
