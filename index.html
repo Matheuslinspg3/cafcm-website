@@ -453,19 +453,28 @@
                 mensagem: document.getElementById('field-mensagem').value
             };
 
-            fetch('https://cafcm-form.matheuslinsrecu.workers.dev', {
+            // Envie para a URL do Formspree.
+            // IMPORTANTE: Substitua 'xkjnkzwn' pelo seu ID real gerado no site do Formspree
+            fetch('https://formspree.io/f/xkjnkzwn', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body: JSON.stringify(formData)
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+            .then(response => {
+                if (response.ok) {
                     contactForm.classList.add('hidden');
                     successMessage.classList.remove('hidden');
                     successMessage.classList.add('flex');
                 } else {
-                    alert('Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.');
+                    response.json().then(data => {
+                        console.error('Formspree error:', data);
+                        alert('Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.');
+                    }).catch(() => {
+                        alert('Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.');
+                    });
                     submitBtn.disabled = false;
                     btnText.textContent = 'Enviar Mensagem';
                     spinner.classList.add('hidden');
