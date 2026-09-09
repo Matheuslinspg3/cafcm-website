@@ -56,6 +56,14 @@ collections:
           - { label: "Curso 1 — Administrativo & Varejo (descrição)", name: "curso1_descricao", widget: "text" }
           - { label: "Curso 2 — Logística: Auxiliar Frentista (descrição)", name: "curso2_descricao", widget: "text" }
           - { label: "Curso 3 — Construção Civil: Servente (descrição)", name: "curso3_descricao", widget: "text" }
+          - { label: "Coletivo Batucada Jovem (descrição)", name: "batucada_descricao", widget: "text" }
+
+          # ---------- PARA JOVENS ----------
+          - { label: "Jovens — Título da Seção", name: "jovens_titulo", widget: "string" }
+          - { label: "Jovens — Subtítulo", name: "jovens_subtitulo", widget: "text" }
+          - { label: "Passo 1 — Rede Protetiva (descrição)", name: "passo1_descricao", widget: "text" }
+          - { label: "Passo 2 — Sem Vestibular (descrição)", name: "passo2_descricao", widget: "text" }
+          - { label: "Passo 3 — Carteira Assinada (descrição)", name: "passo3_descricao", widget: "text" }
 
           # ---------- CONTATO ----------
           - { label: "Contato — Endereço da Sede", name: "endereco_sede", widget: "text", hint: "Aceita <br> para quebra de linha." }

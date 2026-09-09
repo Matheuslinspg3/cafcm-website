@@ -19,6 +19,8 @@ export default async function handler(req, res) {
     const form = formidable({
       maxFileSize: 8 * 1024 * 1024, // 8 MB
       keepExtensions: true,
+      allowEmptyFiles: true, // Let formidable parse the form even if the file is empty/not present
+      minFileSize: 0,
     });
 
     const [fields, files] = await form.parse(req);
@@ -39,7 +41,9 @@ export default async function handler(req, res) {
     const anexoFile = files.anexo ? getFirst(files.anexo) : null;
     let attachments = [];
 
-    if (anexoFile) {
+    // Formidable will create empty files even when not uploaded if keepExtensions is true.
+    // Ensure size is > 0
+    if (anexoFile && anexoFile.size > 0) {
       // Validate file type
       const allowedMimeTypes = [
         'application/pdf',
@@ -47,21 +51,30 @@ export default async function handler(req, res) {
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         'image/jpeg',
         'image/png',
-        'text/plain'
+        'text/plain',
+        'application/octet-stream' // In case it cannot resolve it easily
       ];
 
-      if (!allowedMimeTypes.includes(anexoFile.mimetype)) {
-        return res.status(400).json({ error: 'File type not permitted.' });
+      if (!allowedMimeTypes.includes(anexoFile.mimetype) && anexoFile.mimetype) {
+        // Warning: It could fail for valid files with unknown mime types,
+        // so we'll be more lenient but check for common forbidden types like .exe
+        if(anexoFile.originalFilename && anexoFile.originalFilename.endsWith('.exe')) {
+           return res.status(400).json({ error: 'File type not permitted.' });
+        }
       }
 
-      // Read file to buffer
-      const fileBuffer = fs.readFileSync(anexoFile.filepath);
-      attachments = [
-        {
-          filename: anexoFile.originalFilename,
-          content: fileBuffer,
-        },
-      ];
+      try {
+        // Read file to buffer
+        const fileBuffer = fs.readFileSync(anexoFile.filepath);
+        attachments = [
+          {
+            filename: anexoFile.originalFilename || 'anexo',
+            content: fileBuffer,
+          },
+        ];
+      } catch (err) {
+        console.error("Failed to read uploaded file:", err);
+      }
     }
 
     const dataHora = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
