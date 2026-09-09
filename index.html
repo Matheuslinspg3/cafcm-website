@@ -347,6 +347,11 @@
                             <label for="field-mensagem" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Mensagem</label>
                             <textarea id="field-mensagem" name="mensagem" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-cafcm-red dark:focus:ring-cafcm-yellow focus:border-cafcm-red dark:focus:border-cafcm-yellow outline-none transition-all bg-gray-50 dark:bg-gray-800 dark:text-white focus:bg-white dark:focus:bg-gray-700" placeholder="Como podemos ajudar?"></textarea>
                         </div>
+                        <div>
+                            <label for="field-anexo" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Anexar Documento</label>
+                            <input type="file" id="field-anexo" name="anexo" accept=".png, .jpg, .jpeg, .docx, .txt, .pdf" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-cafcm-red dark:focus:ring-cafcm-yellow focus:border-cafcm-red dark:focus:border-cafcm-yellow outline-none transition-all bg-gray-50 dark:bg-gray-800 dark:text-gray-300 focus:bg-white dark:focus:bg-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cafcm-blue/10 file:text-cafcm-blue hover:file:bg-cafcm-blue/20 dark:file:bg-cafcm-yellow/20 dark:file:text-cafcm-yellow dark:hover:file:bg-cafcm-yellow/30">
+                            <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Permitido: PDF, PNG, JPG, DOCX, TXT. (Tamanho máx: poucos MBs)</p>
+                        </div>
                         <button type="submit" id="submit-btn" class="w-full bg-cafcm-red dark:bg-cafcm-yellow text-white dark:text-cafcm-blue font-bold py-4 rounded-lg hover:bg-cafcm-blue dark:hover:bg-cafcm-orange transition-all duration-300 flex justify-center items-center gap-2 transform hover:scale-105">
                             <span id="btn-text">Enviar Mensagem</span>
                             <i data-lucide="loader-2" id="spinner" class="w-5 h-5 animate-spin hidden"></i>
@@ -445,27 +450,30 @@
             spinner.classList.remove('hidden');
             submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
-            // Envio real para o Worker Cloudflare
-            const formData = {
-                nome: document.getElementById('field-nome').value,
-                email: document.getElementById('field-email').value,
-                perfil: document.getElementById('field-perfil').value,
-                mensagem: document.getElementById('field-mensagem').value
-            };
+            // Cria um FormData para enviar os dados, o que suporta envio de arquivos (multipart/form-data)
+            const formData = new FormData(contactForm);
 
-            fetch('https://cafcm-form.matheuslinsrecu.workers.dev', {
+            // Envie para a URL do Formspree.
+            fetch('https://formspree.io/f/xkjnkzwn', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                headers: {
+                    'Accept': 'application/json'
+                    // Não incluir 'Content-Type': 'application/json' pois FormData cuidará do boundary multipart
+                },
+                body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+            .then(response => {
+                if (response.ok) {
                     contactForm.classList.add('hidden');
                     successMessage.classList.remove('hidden');
                     successMessage.classList.add('flex');
                 } else {
-                    alert('Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.');
+                    response.json().then(data => {
+                        console.error('Formspree error:', data);
+                        alert('Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.');
+                    }).catch(() => {
+                        alert('Erro ao enviar mensagem. Tente novamente ou entre em contato por telefone.');
+                    });
                     submitBtn.disabled = false;
                     btnText.textContent = 'Enviar Mensagem';
                     spinner.classList.add('hidden');
