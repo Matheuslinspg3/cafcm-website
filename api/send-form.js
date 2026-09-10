@@ -90,7 +90,7 @@ export default async function handler(req, res) {
         <p><strong>Mensagem:</strong></p>
         <p style="white-space: pre-wrap; background: #f9f9f9; padding: 15px; border-radius: 5px;">${mensagem}</p>
         <br />
-        <p><strong>Arquivo enviado:</strong> ${anexoFile ? anexoFile.originalFilename : 'Nenhum'}</p>
+        <p><strong>Arquivo enviado:</strong> ${anexoFile && anexoFile.size > 0 ? anexoFile.originalFilename : 'Nenhum'}</p>
         <p><strong>Origem:</strong> Portal CAFCM</p>
         <p><strong>Data/Hora:</strong> ${dataHora}</p>
       </div>
@@ -107,6 +107,10 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error('Resend error:', error);
+      // Detailed error for easier debugging
+      if (error.statusCode === 403) {
+         return res.status(500).json({ error: 'O domínio do remetente não está verificado no Resend. Verifique as configurações de DNS do domínio.' });
+      }
       return res.status(500).json({ error: 'Erro ao enviar o e-mail via Resend.' });
     }
 
