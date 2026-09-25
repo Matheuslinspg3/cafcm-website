@@ -491,7 +491,9 @@
                 method: 'POST',
                 body: formData
             })
-            .then(response => {
+            .then(async response => {
+                const result = await response.json().catch(() => ({}));
+
                 if (response.ok) {
                     contactForm.classList.add('hidden');
                     successMessage.innerHTML = `<i data-lucide="check" class="w-8 h-8 text-green-500 mx-auto mb-4 bg-green-100 rounded-full p-2"></i><h4 class="text-xl font-bold text-green-700 dark:text-green-500 mb-2">Mensagem Enviada!</h4><p class="text-green-600 dark:text-green-400">Dados enviados com sucesso! Nossa equipe recebeu suas informações.</p><button type="button" onclick="resetForm()" class="mt-6 text-sm text-gray-500 hover:text-cafcm-blue dark:hover:text-cafcm-yellow underline">Enviar nova mensagem</button>`;
@@ -500,7 +502,7 @@
                     // recriar icones no DOM alterado
                     lucide.createIcons();
                 } else {
-                    alert('Não foi possível enviar suas informações. Tente novamente em alguns instantes.');
+                    alert(result.message || result.error || 'Não foi possível enviar suas informações. Tente novamente em alguns instantes.');
                     submitBtn.disabled = false;
                     btnText.textContent = 'Enviar Mensagem';
                     spinner.classList.add('hidden');
