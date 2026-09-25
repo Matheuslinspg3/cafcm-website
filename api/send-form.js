@@ -51,7 +51,11 @@ export default async function handler(req, res) {
       ];
 
       if (!allowedMimeTypes.includes(anexoFile.mimetype)) {
-        return res.status(400).json({ error: 'File type not permitted.' });
+        return res.status(400).json({
+          error: 'Tipo de arquivo não permitido.',
+          message: 'Tipo de arquivo não permitido. Envie apenas arquivos PDF, PNG, JPG, DOCX ou TXT.',
+          code: 'UNSUPPORTED_FILE_TYPE',
+        });
       }
 
       // Read file to buffer
