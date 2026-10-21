@@ -4,5 +4,17 @@
       "memory": 1024,
       "maxDuration": 10
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/contato",
+      "destination": "/#contato",
+      "permanent": false
+    },
+    {
+      "source": "/contato/",
+      "destination": "/#contato",
+      "permanent": false
+    }
+  ]
 }
