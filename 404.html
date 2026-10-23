@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Redirecionando | CAFCM</title>
+  <script>
+    (() => {
+      const path = window.location.pathname.replace(/\/+$/, "").toLowerCase();
+      const destination = path === "/contato" ? "/#contato" : "/";
+      window.location.replace(destination);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/"></noscript>
+</head>
+<body>
+  <main>
+    <h1>Vamos levar você ao lugar certo.</h1>
+    <p>Esta página não existe. Você será direcionado ao site oficial da CAFCM.</p>
+    <p><a href="/">Ir para a página inicial</a> · <a href="/#contato">Fale conosco</a></p>
+  </main>
+</body>
+</html>

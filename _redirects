@@ -1,0 +1,9 @@
+# URLs legadas: redirecionamentos permanentes para o site atual.
+/contato /#contato 301
+/contato/ /#contato 301
+/index.php / 301
+/sobre-nos.php /#sobre 301
+/cursos.php /#cursos 301
+/contrate.php /#empresas 301
+/inscricoes.php /#contato 301
+/contato.php /#contato 301

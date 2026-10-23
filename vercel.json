@@ -4,5 +4,47 @@
       "memory": 1024,
       "maxDuration": 10
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/contato",
+      "destination": "/#contato",
+      "permanent": true
+    },
+    {
+      "source": "/contato/",
+      "destination": "/#contato",
+      "permanent": true
+    },
+    {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sobre-nos.php",
+      "destination": "/#sobre",
+      "permanent": true
+    },
+    {
+      "source": "/cursos.php",
+      "destination": "/#cursos",
+      "permanent": true
+    },
+    {
+      "source": "/contrate.php",
+      "destination": "/#empresas",
+      "permanent": true
+    },
+    {
+      "source": "/inscricoes.php",
+      "destination": "/#contato",
+      "permanent": true
+    },
+    {
+      "source": "/contato.php",
+      "destination": "/#contato",
+      "permanent": true
+    }
+  ]
 }
