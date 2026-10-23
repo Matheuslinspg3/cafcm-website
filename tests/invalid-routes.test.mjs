@@ -1,48 +1,26 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { runInNewContext } from 'node:vm';
-
-const html = readFileSync(new URL('../404.html', import.meta.url), 'utf8');
-const script = html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
-const config = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
-const cloudflare = readFileSync(new URL('../_redirects', import.meta.url), 'utf8');
-
-function fallbackFor(pathname) {
-  let redirect = null;
-  runInNewContext(script, {
-    window: { location: { pathname, replace: (url) => { redirect = url; } } },
-  });
-  return redirect;
-}
-
-test('404 leva caminhos inexistentes à página inicial', () => {
-  assert.ok(script, 'a página 404 deve ter uma rotina de redirecionamento');
-  for (const pathname of ['/nao-existe', '/qualquer/coisa', '/abc123', '/404.html']) {
-    assert.equal(fallbackFor(pathname), '/');
-  }
+const read = p => readFileSync(new URL('../'+p, import.meta.url),'utf8');
+const config = JSON.parse(read('vercel.json'));
+const rules = read('_redirects').split('\n').filter(l=>l && !l.startsWith('#'));
+const expected = {"/contato":"/#contato","/contato/":"/#contato","/index.php":"/","/sobre-nos.php":"/#sobre","/cursos.php":"/#cursos","/contrate.php":"/#empresas","/inscricoes.php":"/#contato","/contato.php":"/#contato"};
+test('URLs antigas têm destinos válidos e permanentes nos dois provedores',()=>{
+ const ids = [...read('index.html').matchAll(/id="([^"]+)"/g)].map(m=>m[1]);
+ for(const [source,destination] of Object.entries(expected)){
+  assert.deepEqual(config.redirects.find(r=>r.source===source),{source,destination,permanent:true});
+  assert.ok(rules.includes(source+' '+destination+' 301'));
+  if(destination.includes('#')) assert.ok(ids.includes(destination.split('#')[1]));
+ }
 });
-
-test('atalho /contato leva à seção de contato', () => {
-  for (const pathname of ['/contato', '/contato/', '/CONTATO/']) {
-    assert.equal(fallbackFor(pathname), '/#contato');
-  }
+test('rotas não interceptam APIs ou arquivos estáticos',()=>{
+ assert.deepEqual(config.functions['api/**/*.js'],{memory:1024,maxDuration:10});
+ assert.ok(config.redirects.every(r=>!r.source.includes('*') && !r.source.startsWith('/api')));
 });
-
-test('fallback funciona sem JavaScript e sem criar loop', () => {
-  assert.match(html, /<noscript><meta http-equiv="refresh" content="0; url=\/">/);
-  assert.equal(fallbackFor('/'), '/');
-});
-
-test('Vercel preserva as funções e redireciona só /contato', () => {
-  assert.deepEqual(config.functions['api/**/*.js'], { memory: 1024, maxDuration: 10 });
-  assert.deepEqual(config.redirects.map(({ source, destination }) => [source, destination]), [
-    ['/contato', '/#contato'], ['/contato/', '/#contato'],
-  ]);
-  assert.equal(config.redirects.some(({ source }) => source.includes('*')), false);
-});
-
-test('Cloudflare não inclui redirecionamento genérico que afete imagens e APIs', () => {
-  const rules = cloudflare.split('\n').map((line) => line.trim()).filter((line) => line && !line.startsWith('#'));
-  assert.deepEqual(rules, ['/contato /#contato 302', '/contato/ /#contato 302']);
+test('identidade pública contém URL e telefone confirmados',()=>{
+ const html=read('index.html');
+ assert.match(html, /rel="canonical" href="https:\/\/www.cafcm.org.br\/"/);
+ const data=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+ assert.equal(data.telephone,'+55-13-3395-0246');
+ assert.equal(data.address.streetAddress,'Rua Fumio Miyazi, 453');
 });
